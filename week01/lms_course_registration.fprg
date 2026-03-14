@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Course Registration"/>
+        <attribute name="authors" value="1122Admin1"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-02-16 08:08:13 AM"/>
+        <attribute name="created" value="MTEyMkFkbWluMTtDLTIyOTk7MjAyNi0wMi0xNTsxMjowMTowOSBBTTsyMzIy"/>
+        <attribute name="edited" value="MTEyMkFkbWluMTtDLTIyOTk7MjAyNi0wMi0xNTsxMjoxMjo1OCBBTTs1OzExMjJBZG1pbjE7Qy0yMjk5OzIwMjYtMDItMTM7MDI6MDQ6MDUgUE07TG1zIHJlZ2lzdHJhdGlvbi5mcHJnOzcwMDc="/>
+        <attribute name="edited" value="MTEyMkFkbWluMTtDLTIyOTk7MjAyNi0wMi0xNjswODowODoxMyBBTTs0OzI0NDE="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="semester, currentCH, courseCH, courseLevel, totalCH" type="Integer" array="False" size=""/>
+            <declare name="gpa" type="Real" array="False" size=""/>
+            <declare name="hasPrereq, courseFull, probation, eligible, canWaitlist, permission" type="Boolean" array="False" size=""/>
+            <assign variable="eligible" expression="true"/>
+            <assign variable="canWaitlist" expression="false"/>
+            <output expression="&quot;Enter your semester&quot;" newline="True"/>
+            <input variable="semester"/>
+            <if expression="semester&lt;1 OR semester&gt;8">
+                <then>
+                    <output expression="&quot;Invalid semester. Please enter correct semester.&quot;" newline="True"/>
+                </then>
+                <else>
+                    <if expression="semester == 1">
+                        <then>
+                            <assign variable="gpa" expression="0"/>
+                            <assign variable="hasPrereq" expression="true"/>
+                            <assign variable="probation" expression="false"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;Enter your GPA.&quot;" newline="True"/>
+                            <input variable="gpa"/>
+                            <if expression="gpa&gt;4">
+                                <then>
+                                    <output expression="&quot;Please enter correct GPA.&quot;" newline="True"/>
+                                </then>
+                                <else/>
+                            </if>
+                            <output expression="&quot;Has completed prerequisites?&quot;" newline="True"/>
+                            <input variable="hasPrereq"/>
+                        </else>
+                    </if>
+                    <output expression="&quot;Current credit hours enrolled?&quot;" newline="True"/>
+                    <input variable="currentCH"/>
+                    <if expression="currentCH&gt;21">
+                        <then>
+                            <output expression="&quot;Maximum 21 credit hours allowed.&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;Enter course level.&quot;" newline="True"/>
+                            <input variable="courseLevel"/>
+                            <if expression="courseLevel&lt;100 OR courseLevel&gt;400">
+                                <then/>
+                                <else/>
+                            </if>
+                            <output expression="&quot;Enter course credit hours.&quot;" newline="True"/>
+                            <input variable="courseCH"/>
+                            <if expression="courseCH&lt;1 OR courseCH&gt;4">
+                                <then>
+                                    <output expression="&quot;Credit hours must be between 1-4 &quot;" newline="True"/>
+                                </then>
+                                <else>
+                                    <output expression="&quot;Is course full?&quot;" newline="True"/>
+                                    <input variable="courseFull"/>
+                                    <output expression="&quot;Are you on probation?&quot;" newline="True"/>
+                                    <input variable="probation"/>
+                                    <assign variable="totalCH" expression="currentCH+courseCH"/>
+                                    <if expression="(probation == true AND totalCH &gt; 14) OR (probation == false AND gpa &lt; 3.5 AND totalCH &gt; 18)">
+                                        <then>
+                                            <assign variable="eligible" expression="false"/>
+                                            <output expression="&quot;Credit hour limit not satisfied.&quot;" newline="True"/>
+                                        </then>
+                                        <else>
+                                            <comment text="Eligiblity IF checks."/>
+                                            <comment text="Course level"/>
+                                            <if expression="courseLevel == 200 AND semester &lt; 2">
+                                                <then>
+                                                    <assign variable="eligible" expression="false"/>
+                                                    <output expression="&quot;Registration DENIED (Need semester 2 for 200-level courses.)&quot;" newline="True"/>
+                                                </then>
+                                                <else>
+                                                    <if expression="courseLevel == 300 AND semester &lt;4">
+                                                        <then>
+                                                            <assign variable="eligible" expression="false"/>
+                                                            <output expression="&quot;Registration DENIED (Need semester 4 for 300-level courses.)&quot;" newline="True"/>
+                                                        </then>
+                                                        <else>
+                                                            <if expression="courseLevel == 400 AND (semester &lt; 6 OR gpa &lt; 2.5)">
+                                                                <then>
+                                                                    <assign variable="eligible" expression="false"/>
+                                                                    <if expression="semester&lt;6">
+                                                                        <then>
+                                                                            <output expression="&quot;Registration DENIED (Need semester 6 for 400-level courses.)&quot;" newline="True"/>
+                                                                        </then>
+                                                                        <else/>
+                                                                    </if>
+                                                                    <if expression="gpa&lt;2.5">
+                                                                        <then>
+                                                                            <output expression="&quot;Registration DENIED( Minimum GPA requirement 2.5)&quot;" newline="True"/>
+                                                                        </then>
+                                                                        <else/>
+                                                                    </if>
+                                                                </then>
+                                                                <else>
+                                                                    <comment text="Credit Hours/Probation"/>
+                                                                    <if expression="probation == true AND totalCH &gt; 14">
+                                                                        <then>
+                                                                            <assign variable="eligible" expression="false"/>
+                                                                            <output expression="&quot;Registration DENIED( Max credit hours 14 due to probation)&quot;" newline="True"/>
+                                                                        </then>
+                                                                        <else>
+                                                                            <if expression="totalCH &gt; 18 AND gpa &lt; 3.5">
+                                                                                <then>
+                                                                                    <assign variable="eligible" expression="false"/>
+                                                                                    <output expression="&quot;Registration Denied( Maximum Credit hours limit 18).&quot;" newline="True"/>
+                                                                                </then>
+                                                                                <else>
+                                                                                    <comment text="Prerequisites"/>
+                                                                                    <if expression="hasPrereq == false">
+                                                                                        <then>
+                                                                                            <if expression="NOT (gpa &gt;= 3.8 AND ( courseLevel == 100 OR courseLevel==200))">
+                                                                                                <then>
+                                                                                                    <assign variable="eligible" expression="false"/>
+                                                                                                    <output expression="&quot;Registration DENIED.&quot;" newline="True"/>
+                                                                                                    <output expression="&quot;Reason: You have not completed prerequisites and your GPA is also below 3.8.&quot;" newline="True"/>
+                                                                                                </then>
+                                                                                                <else>
+                                                                                                    <output expression="&quot;Do you have instructor's permission as you have not completed prerequisite?&quot;" newline="True"/>
+                                                                                                    <input variable="permission"/>
+                                                                                                    <output expression="&quot;Approved due to high gpa&quot;" newline="True"/>
+                                                                                                </else>
+                                                                                            </if>
+                                                                                        </then>
+                                                                                        <else/>
+                                                                                    </if>
+                                                                                    <comment text="course full and waitlist"/>
+                                                                                    <if expression="courseFull == true">
+                                                                                        <then>
+                                                                                            <if expression="gpa &gt;= 3.5">
+                                                                                                <then>
+                                                                                                    <assign variable="canWaitlist" expression="true"/>
+                                                                                                    <assign variable="eligible" expression="false"/>
+                                                                                                </then>
+                                                                                                <else>
+                                                                                                    <assign variable="eligible" expression="false"/>
+                                                                                                </else>
+                                                                                            </if>
+                                                                                        </then>
+                                                                                        <else/>
+                                                                                    </if>
+                                                                                    <comment text="Final Output"/>
+                                                                                    <if expression="eligible == true">
+                                                                                        <then>
+                                                                                            <if expression="gpa&gt;=3.5 AND totalCH&gt;18">
+                                                                                                <then>
+                                                                                                    <output expression="&quot;Overload APPROVED due to high GPA.&quot;" newline="True"/>
+                                                                                                </then>
+                                                                                                <else/>
+                                                                                            </if>
+                                                                                            <if expression="gpa&gt;3.8 AND permission == true">
+                                                                                                <then>
+                                                                                                    <output expression="&quot;High GPA allows override of prerequisites.&quot;" newline="True"/>
+                                                                                                </then>
+                                                                                                <else/>
+                                                                                            </if>
+                                                                                            <output expression="&quot;Registration APPROVED. Course can be added.&quot;" newline="True"/>
+                                                                                            <output expression="&quot;New total credit hours are &quot; &amp; totalCH" newline="True"/>
+                                                                                        </then>
+                                                                                        <else>
+                                                                                            <if expression="canWaitlist == true AND gpa &gt;=3.5">
+                                                                                                <then>
+                                                                                                    <output expression="&quot;Added to WAITLIST due to full course.&quot;" newline="True"/>
+                                                                                                </then>
+                                                                                                <else>
+                                                                                                    <output expression="&quot;Registration DENIED (GPA too low for waitlist.)&quot;" newline="True"/>
+                                                                                                </else>
+                                                                                            </if>
+                                                                                        </else>
+                                                                                    </if>
+                                                                                </else>
+                                                                            </if>
+                                                                        </else>
+                                                                    </if>
+                                                                </else>
+                                                            </if>
+                                                        </else>
+                                                    </if>
+                                                </else>
+                                            </if>
+                                        </else>
+                                    </if>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Average grade"/>
+        <attribute name="authors" value="1122Admin1"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-02-16 09:20:16 AM"/>
+        <attribute name="created" value="MTEyMkFkbWluMTtDLTIyOTk7MjAyNi0wMi0xNjswODozNzo1MSBBTTsyMzM0"/>
+        <attribute name="edited" value="MTEyMkFkbWluMTtDLTIyOTk7MjAyNi0wMi0xNjswOToyMDoxNiBBTTsxOzI0MzY="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="grade, i, average, sum, number" type="Real" array="False" size=""/>
+            <output expression="&quot;Enter number of subjects&quot;" newline="True"/>
+            <input variable="number"/>
+            <assign variable="sum" expression="0"/>
+            <for variable="i" start="1" end="number" direction="inc" step="1">
+                <output expression="&quot;Enter your grade &quot; &amp; i" newline="True"/>
+                <input variable="grade"/>
+                <assign variable="sum" expression="sum+grade"/>
+            </for>
+            <assign variable="average" expression="sum/number"/>
+            <output expression="&quot;Your average is &quot; &amp;average" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
