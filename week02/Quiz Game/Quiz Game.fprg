@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Quiz Game"/>
+        <attribute name="authors" value="1122Admin1"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-02-20 10:42:37 AM"/>
+        <attribute name="created" value="MTEyMkFkbWluMTtDLTIyOTk7MjAyNi0wMi0yMDswOTo0MzozNiBBTTsyMzMw"/>
+        <attribute name="edited" value="MTEyMkFkbWluMTtDLTIyOTk7MjAyNi0wMi0yMDsxMDo0MjozNyBBTTsxOzI0MzA="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="level, choice1, choice2, choice3, choice4, choice5, score, count" type="Integer" array="False" size=""/>
+            <declare name="playagain" type="Boolean" array="False" size=""/>
+            <assign variable="score" expression="0"/>
+            <assign variable="count" expression="0"/>
+            <do expression="playagain = true">
+                <output expression="&quot;Choose difficulty level&quot;" newline="True"/>
+                <output expression="&quot;1 = easy 2 = hard&quot;" newline="False"/>
+                <input variable="level"/>
+                <if expression="level = 1">
+                    <then>
+                        <output expression="&quot;In which movie Brad Pitt played a role? &quot;" newline="True"/>
+                        <output expression="&quot;1- Fight Club  2- Titanic  3- Dark Knight&quot;" newline="True"/>
+                        <input variable="choice1"/>
+                        <if expression="choice1 = 1">
+                            <then>
+                                <output expression="&quot;Correct Answer. Keep going&quot;" newline="True"/>
+                                <assign variable="score" expression="score+10"/>
+                                <assign variable="count" expression="count+1"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;Wrong Answer! The correct answer is Fight Club.&quot;" newline="True"/>
+                            </else>
+                        </if>
+                        <output expression="&quot;Which movie is more rated ?&quot;" newline="True"/>
+                        <output expression="&quot;1-Evil Dead  2- Titanic  3- Resident evil&quot;" newline="True"/>
+                        <input variable="choice2"/>
+                        <if expression="choice2=2">
+                            <then>
+                                <output expression="&quot;Correct Answer. Carry on&quot;" newline="True"/>
+                                <assign variable="score" expression="score+10"/>
+                                <assign variable="count" expression="count+1"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;Wrong Answer! The correct answer is Titanic.&quot;" newline="True"/>
+                            </else>
+                        </if>
+                        <output expression="&quot;Which movie features superheros?&quot;" newline="True"/>
+                        <output expression="&quot;1-Frozen  2-Jurrasic Park 3-The Avengers&quot;" newline="True"/>
+                        <input variable="choice3"/>
+                        <if expression="choice3=3">
+                            <then>
+                                <output expression="&quot;Correct Answer. Keep going&quot;" newline="True"/>
+                                <assign variable="score" expression="score+10"/>
+                                <assign variable="count" expression="count+1"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;Wrong Answer! The correct answer is Avengers.&quot;" newline="True"/>
+                            </else>
+                        </if>
+                        <output expression="&quot;Which movie is about a giant shark?&quot;" newline="True"/>
+                        <output expression="&quot;1-Jaws  2-Toy Story  3-The lion king&quot;" newline="True"/>
+                        <input variable="choice4"/>
+                        <if expression="choice4=1">
+                            <then>
+                                <output expression="&quot;Correct Answer. Carry on&quot;" newline="True"/>
+                                <assign variable="score" expression="score+10"/>
+                                <assign variable="count" expression="count+1"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;Wrong Answer! The correct answer is Jaws.&quot;" newline="True"/>
+                            </else>
+                        </if>
+                        <output expression="&quot;Which movie is about Aliens?&quot;" newline="True"/>
+                        <output expression="&quot;1-Finding Nemo  2-Avatar  3-Shrek&quot;" newline="True"/>
+                        <input variable="choice5"/>
+                        <if expression="choice5=2">
+                            <then>
+                                <output expression="&quot;Correct Answer. Carry on&quot;" newline="True"/>
+                                <assign variable="score" expression="score+10"/>
+                                <assign variable="count" expression="count+1"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;Wrong Answer! The correct answer is Avatar.&quot;" newline="True"/>
+                            </else>
+                        </if>
+                    </then>
+                    <else>
+                        <output expression="&quot;Which one of the following movies Chistopher Nolan directed?&quot;" newline="True"/>
+                        <output expression="&quot;1- Fury  2- F1  3- Dark Knight&quot;" newline="True"/>
+                        <input variable="choice1"/>
+                        <if expression="choice1 = 3">
+                            <then>
+                                <output expression="&quot;Correct Answer. Keep going&quot;" newline="True"/>
+                                <assign variable="score" expression="score+20"/>
+                                <assign variable="count" expression="count+1"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;Wrong Answer! The correct answer is Dark Knight.&quot;" newline="True"/>
+                            </else>
+                        </if>
+                        <output expression="&quot;Which one is the fictional African country in Black Panther?&quot;" newline="True"/>
+                        <output expression="&quot;1-Zamunda  2- Wakanda  3- Genosha&quot;" newline="True"/>
+                        <input variable="choice2"/>
+                        <if expression="choice2=2">
+                            <then>
+                                <output expression="&quot;Correct Answer. Carry on&quot;" newline="True"/>
+                                <assign variable="score" expression="score+20"/>
+                                <assign variable="count" expression="count+1"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;Wrong Answer! The correct answer is Wakanda.&quot;" newline="True"/>
+                            </else>
+                        </if>
+                        <output expression="&quot;Which movie is top rated of all time on imdb?&quot;" newline="True"/>
+                        <output expression="&quot;1-The Shawshank Redemption  2-Jaws  3-The Avengers&quot;" newline="True"/>
+                        <input variable="choice3"/>
+                        <if expression="choice3=1">
+                            <then>
+                                <output expression="&quot;Correct Answer. Keep going&quot;" newline="True"/>
+                                <assign variable="score" expression="score+20"/>
+                                <assign variable="count" expression="count+1"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;Wrong Answer! The correct answer is Shawshank Redemption.&quot;" newline="True"/>
+                            </else>
+                        </if>
+                        <output expression="&quot;In the Matrix, what is the real name of Neo?&quot;" newline="True"/>
+                        <output expression="&quot;1-Thomas Anderson  2-John Wick  3-David&quot;" newline="True"/>
+                        <input variable="choice4"/>
+                        <if expression="choice4=1">
+                            <then>
+                                <output expression="&quot;Correct Answer. Carry on&quot;" newline="True"/>
+                                <assign variable="score" expression="score+20"/>
+                                <assign variable="count" expression="count+1"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;Wrong Answer! The correct answer is Thomas Anderson.&quot;" newline="True"/>
+                            </else>
+                        </if>
+                        <output expression="&quot;Who composed the orignal score for Titanic?&quot;" newline="True"/>
+                        <output expression="&quot;1-Hans Zimmer  2-John Wills  3-James Horner&quot;" newline="True"/>
+                        <input variable="choice5"/>
+                        <if expression="choice5=3">
+                            <then>
+                                <output expression="&quot;Correct Answer.&quot;" newline="True"/>
+                                <assign variable="score" expression="score+20"/>
+                                <assign variable="count" expression="count+1"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;Wrong Answer! The correct answer is James Horner.&quot;" newline="True"/>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+                <output expression="&quot;Welldone&quot;" newline="True"/>
+                <output expression="&quot;Your Score is &quot; &amp;score" newline="True"/>
+                <output expression="&quot;You have answered &quot; &amp;count&amp; &quot; questions correct.&quot;" newline="True"/>
+                <output expression="&quot;Do you want to play again?&quot;" newline="True"/>
+                <input variable="playagain"/>
+            </do>
+        </body>
+    </function>
+</flowgorithm>

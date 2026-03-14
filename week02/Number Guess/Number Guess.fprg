@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Number Guess"/>
+        <attribute name="authors" value="1122Admin1"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-02-19 09:08:07 PM"/>
+        <attribute name="created" value="MTEyMkFkbWluMTtDLTIyOTk7MjAyNi0wMi0xNjswOToyMDo0OCBBTTsyMzMz"/>
+        <attribute name="edited" value="MTEyMkFkbWluMTtDLTIyOTk7MjAyNi0wMi0xOTswOTowODowNyBQTTsyOzI0NjE="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="randNum, guessNum, attempt" type="Integer" array="False" size=""/>
+            <assign variable="randNum" expression="Random(100+1-1)+1"/>
+            <assign variable="attempt" expression="1"/>
+            <assign variable="guessNum" expression="0"/>
+            <output expression="&quot;I'm thinking of a number guess it.&quot;" newline="True"/>
+            <input variable="guessNum"/>
+            <while expression="guessNum!=randNum">
+                <if expression="guessNum&gt;randNum">
+                    <then>
+                        <output expression="&quot;Too High&quot;" newline="True"/>
+                    </then>
+                    <else>
+                        <output expression="&quot;Too low&quot;" newline="True"/>
+                    </else>
+                </if>
+                <input variable="guessNum"/>
+                <assign variable="attempt" expression="attempt+1"/>
+            </while>
+            <output expression="&quot;Congrats you guessed it in &quot; &amp;attempt&amp; &quot; attempts.&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
